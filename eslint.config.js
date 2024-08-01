@@ -9,13 +9,12 @@ export default [
     languageOptions: {
       globals: globals.browser,
     },
-   /* ...pluginJs.configs.recommended,
+    ...pluginJs.configs.recommended,
     ...tseslint.configs.recommended,
-    ...pluginReact.configs.flat.recommended,*/
+    ...pluginReact.configs.flat.recommended,
     rules: {
       "no-console": "off",
       "no-unused-vars": "off",
-      // Add other rules you want to disable or customize here
     },
   },
 ];

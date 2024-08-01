@@ -40,7 +40,7 @@ export const signup =async(req,res)=>{
     res.status(400).json({error:"Invalid user data"});
 }
 }catch(error){
-    console.log("Error in signup controoler", error.message)
+    console.log("Error in signup controller", error.message)
     res.status(500).json({error:error.message})
     }
 };
@@ -61,13 +61,18 @@ export const loginUser = async(req,res)=>{
         })
 
     } catch (error) {
-        console.log("Error in login controoler", error.message)
+        console.log("Error in login controller", error.message)
         res.status(500).json({error:error.message})
     }
     
 }
 
-export const logoutUser =(req,res)=>{
-    res.send("logout");
-    console.log("logoutUser");
+export const logoutUser = (req,res) =>{
+    try {
+        res.cookie("jwt","",{maxAge:0})
+        res.status(200).json({message:"logged out successfully"})
+    } catch (error) {
+        console.log("Error in logout controller", error.message)
+        res.status(500).json({error:error.message})
+    }
 }
