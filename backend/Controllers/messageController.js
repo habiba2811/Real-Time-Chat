@@ -29,8 +29,28 @@ export const sendMessage = async(req,res)=>{
         await Promise.all([chat.save(), newMessage.save()]);
       res.status(201).json(newMessage)
    } catch (error) {
-    console.log("Error in sendMeassage controller:", error.message)
+    console.log("Error in sendMessage controller:", error.message)
     res.status(500).json({error:"Internl server error"});
     
+   }
+};
+
+
+export const getMessages = async(req,res)=>{
+   try {
+      const {id:userToChatId}= req.params;
+      const senderId = req.user._id;
+
+      const chat = await Chat.findOne({
+         participants:{ $all :[senderId,userToChatId]},
+      }).populate("messages"); // Not refrence but the message itself
+    
+      if(!chat) return res.status(200).json([]);
+
+      const chats = chat.messages
+      res.status(200).json(chats);
+   } catch (error) {
+      console.log("Error in getMessages controller:", error.message);
+      res.status(500).json({error:"Internl server error"});
    }
 }
