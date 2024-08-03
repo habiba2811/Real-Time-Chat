@@ -87,8 +87,8 @@ const handleSubmit = async(e) =>{
          <div> <button
             type="submit"
             className="w-full py-2 px-4 bg-blue-900 text-white text-base font-semibold rounded-lg hover:bg-blue-700"
-          >
-            Sign Up
+           disabled= {loading} >
+            {loading ? <span className='loading loading-spinner'></span> : "Sign Up"}
           </button> </div>
           <GenderCheckbox onCheckboxChange ={handleCheckboxChange} selectedGender={inputs.gender} />
         </form>

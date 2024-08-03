@@ -1,20 +1,35 @@
+import { useState } from 'react';
 import {Link} from 'react-router-dom'
+import useLogin from '../../hooks/useLogin';
 const Login = () => {
+
+  const [username,setUsername] = useState("");
+  const [password,setPassword] = useState("");
+
+
+  const {loading,login}=useLogin()
+
+const handleSubmit= async (e)=> {
+  e.preventDefault();
+  await login(username,password)
+}
   return (
     <div className="flex flex-col items-center justify-center min-w-96 mx-auto">
       <div className="w-full max-w-md p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0">
         <h1 className="text-3xl font-semibold text-center text-gray-300 mb-6">
           Login <span className="text-blue-900">ChitChat</span>
         </h1>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label className="block text-lg font-medium text-blue-100 mb-2">
               User Name
             </label>
             <input
               type="text"
-              placeholder="Enter username"
+              placeholder="Enter user name"
               className="w-full p-3 border border-gray-300 rounded-lg"
+              value={username}
+              onChange={(e)=> setUsername(e.target.value)}
             />
           </div>
           <div className="mb-4">
@@ -25,7 +40,10 @@ const Login = () => {
               type="password"
               placeholder="Enter Password"
               className="w-full p-3 border border-gray-300 rounded-lg"
-            />
+              value={password}
+              onChange={(e)=> setPassword(e.target.value)}
+           
+           />
           </div>
           <Link
             to="/signup"
@@ -36,8 +54,9 @@ const Login = () => {
           <button
             type="submit"
             className="w-full py-3 px-4 bg-blue-900 text-white text-lg font-semibold rounded-lg hover:bg-blue-700"
+          disabled={loading}
           >
-            Login
+             {loading ? <span className='loading loading-spinner'></span> : "Login"}
           </button>
         </form>
       </div>
