@@ -9,7 +9,7 @@ const Login = () => {
         <form>
           <div className="mb-3">
             <label className="block text-lg font-medium text-blue-100 mb-2">
-              Username
+              User Name
             </label>
             <input
               type="text"

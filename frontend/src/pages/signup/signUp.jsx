@@ -44,7 +44,7 @@ const handleSubmit = async(e) =>{
           </div>
           <div className="mb-3">
             <label className="block text-base font-medium text-blue-100 mb-1">
-              userName
+              User Name
             </label>
             <input
               type="text"
