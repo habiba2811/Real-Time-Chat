@@ -1,5 +1,6 @@
 import Chat from "../models/chatModel.js"
 import Message from "../models/mesageModel.js"
+import { getReceicerSocketId,io } from "../socket/socket.js";
 export const sendMessage = async(req,res)=>{
    try {
       const {message}=req.body;
@@ -19,14 +20,22 @@ export const sendMessage = async(req,res)=>{
          receiverId:receiverId,
          message: message,
       })
-      if (newMessage)
+      if (newMessage){
         { chat.messages.push(newMessage._id);}
-      // SOCKET IO FUNCTIONALITY WILL BE HERE
-
-      //  await chat.save();
+      }
+     
+        //  await chat.save();
         // await newMessage.save();
+
         // this will run in parallel
         await Promise.all([chat.save(), newMessage.save()]);
+
+        //socket io
+        const receicerSocketId = getReceicerSocketId(receiverId);
+        if(receicerSocketId){
+         io.to(receicerSocketId).emit("newMessage",newMessage) //to.emit will only send to this user, emit sends to all users
+        }
+
       res.status(201).json(newMessage)
    } catch (error) {
     console.log("Error in sendMessage controller:", error.message)
