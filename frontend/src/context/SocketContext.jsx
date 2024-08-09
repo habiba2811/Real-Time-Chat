@@ -17,12 +17,11 @@ export const SocketContextProvider = ({children}) => {
 
     useEffect(( )=> {
         if(authUser){
-            const socket =io("https://chitchat-v6w9.onrender.com/",{
+            const socket =io("https://chitchat-2-o4xj.onrender.com",{
                 query:{
                     userId: authUser._id,
-                }
+                },
             });
-
             setSocket(socket);
             socket.on("getOnlineUsers",(users) => {
                 setOnlineUsers(users);
