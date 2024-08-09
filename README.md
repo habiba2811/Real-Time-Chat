@@ -1,10 +1,17 @@
-# Chit Chat App
+# Realtime Chat App
 
 ![Chat App](https://img.shields.io/badge/MERN-Stack-blue)
 ![Socket.io](https://img.shields.io/badge/Socket.io-Real--time-green)
 ![Version](https://img.shields.io/badge/Version-1.0.0-orange)
 
-This is a real-time chat application built with the MERN (MongoDB, Express, React, Node.js) stack and Socket.io for real-time communication. The project was inspired by the YouTube channel [As a programmer](https://www.youtube.com/channel/UCxDwS1LPJcO2BvwsVVUUBlA), which offers great tutorials for aspiring developers.
+![signUp](https://github.com/user-attachments/assets/725b3a63-17b3-401f-a705-e680f7720fdf)
+![login](https://github.com/user-attachments/assets/3231870a-554b-472d-8581-1a63eb0b3be9)
+![homePage](https://github.com/user-attachments/assets/45690189-1e90-48e5-96f8-057f19b231d8)
+![chat1](https://github.com/user-attachments/assets/1424b497-e973-4711-a693-1057001ddaa9)
+![chat2](https://github.com/user-attachments/assets/83c13da8-16c4-4444-85b1-1953993d96e4)
+![database](https://github.com/user-attachments/assets/134acca8-4698-404e-b3aa-cba2ee68351b)
+
+This is a real-time chat application built with the MERN (MongoDB, Express, React, Node.js) stack and Socket.io for real-time communication.
 
 ## Table of Contents
 
@@ -13,7 +20,8 @@ This is a real-time chat application built with the MERN (MongoDB, Express, Reac
 - [Installation](#installation)
 - [Usage](#usage)
 - [Technologies Used](#technologies-used)
-- [Folder Structure](#folder-structure)
+- [Docker Setup](#docker-setup)
+- [Known Issues](#known-issues)
 - [Contributing](#contributing)
 - [License](#license)
 - [Acknowledgements](#acknowledgements)
@@ -23,14 +31,12 @@ This is a real-time chat application built with the MERN (MongoDB, Express, Reac
 - **Real-time Communication**: Send and receive messages instantly with Socket.io.
 - **User Authentication**: Secure login and signup using JWT (JSON Web Token).
 - **Responsive Design**: Fully responsive UI built with React and Tailwind CSS.
-- **User Management**: Create, update, and manage user profiles.
 - **Message History**: View chat history stored in MongoDB.
-- **Group Chats**: Create and manage group chats.
 - **Notifications**: Receive notifications for new messages.
 
 ## Demo
 
-Check out the live demo of the app [here](#). *(Replace this link with the deployed app URL)*
+Check out the live demo of the app [[here](https://chitchat-2-o4xj.onrender.com/)](#).
 
 ## Installation
 
@@ -87,37 +93,57 @@ To get a local copy of the project up and running, follow these steps:
 
 ## Usage
 
-Once the server is running, you can register a new user, log in, and start chatting in real-time with other users. You can create group chats, view message history, and receive notifications for new messages.
+Once the server is running, you can register a new user, log in, and start chatting in real-time with other users.
 
 ## Technologies Used
 
 - **Frontend**: React, Tailwind CSS, DaisyUI
 - **Backend**: Node.js, Express.js, MongoDB, Mongoose, JWT for authentication
 - **Real-time Communication**: Socket.io
-- **Deployment**: Render (or other hosting services)
+- **Containerization**: Docker
+- **Deployment**: Render
 
-## Folder Structure
+## Docker Setup
 
-```plaintext
-Chat/
-│
-├── backend/                # Backend (Node.js + Express + MongoDB)
-│   ├── Controllers/        # Request handlers
-│   ├── Models/             # Mongoose models
-│   ├── Routes/             # API routes
-│   ├── server.js           # Main server file
-│   └── .env                # Environment variables
-│
-├── frontend/               # Frontend (React + Tailwind CSS)
-│   ├── src/
-│   │   ├── components/     # Reusable components
-│   │   ├── pages/          # Application pages
-│   │   ├── App.jsx         # Main React app component
-│   │   └── index.js        # Entry point for React
-│   └── public/             # Static files
-│
-└── README.md               # Project documentation
-```
+To simplify the process of setting up and running the application, a Docker configuration is included. Follow these steps to build and run the app using Docker.
+
+### Prerequisites
+
+- [Docker](https://www.docker.com/) installed on your machine.
+
+### Building the Docker Image
+
+1. Navigate to the root directory of the project where the `Dockerfile` is located.
+   
+2. Build the Docker image using the following command:
+   ```bash
+   docker build -t realtime-chat-app .
+   ```
+
+### Running the Container
+
+1. After building the image, you can run the app in a Docker container using the following command:
+   ```bash
+   docker run -d -p 5000:5000 --name chat-app-container realtime-chat-app
+   ```
+
+   This command will run the app on port 5000. You can adjust the port if needed.
+
+2. The app should now be accessible at `http://localhost:5000`.
+
+## Known Issues
+
+### Socket.io Deployment
+
+**Note:** Currently, the Socket.io real-time features may not function correctly on Render due to deployment limitations. The application is known to work as expected when running locally on `localhost`. If you encounter issues related to Socket.io on Render or other hosting services, consider the following:
+
+- **Check Deployment Configuration:** Ensure that the hosting environment supports WebSocket connections. Some platforms may require specific configurations to enable WebSocket support.
+- **Local Testing:** For development and testing purposes, running the application locally provides the best experience with Socket.io functionality.
+
+### Troubleshooting
+
+- **Socket Connection Errors:** If you encounter issues with socket connections, verify the server URL and ensure that your server is properly handling Socket.io connections.
+- **Network Issues:** Ensure that there are no network issues or restrictions that could be blocking WebSocket connections.
 
 ## Contributing
 
@@ -135,11 +161,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Acknowledgements
 
-- **[As a programmer](https://www.youtube.com/channel/UCxDwS1LPJcO2BvwsVVUUBlA)**: Inspiration and tutorials.
-- **[Socket.io](https://socket.io/)**: Real-time communication.
-- **[Tailwind CSS](https://tailwindcss.com/)**: For styling.
-- **[DaisyUI](https://daisyui.com/)**: For UI components.
-
----
-
-*Feel free to customize the content above to suit your specific project details!*
+- As a programmer
