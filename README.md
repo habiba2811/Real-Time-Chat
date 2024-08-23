@@ -8,7 +8,7 @@
 ![CI/CD](https://img.shields.io/badge/CI%2FCD-GitHub%20Actions-yellow)
 
 
-This is a real-time chat application built with the MERN (MongoDB, Express, React, Node.js) stack and Socket.io for real-time communication
+This is a real-time chat application built with the MERN (MongoDB, Express, React, Node.js) stack and Socket.io for real-time communication. This repository also includes Docker support and a CI/CD pipeline to automate the deployment process.
 
 ## Demo
 
