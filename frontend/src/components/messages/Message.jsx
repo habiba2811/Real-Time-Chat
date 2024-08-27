@@ -1,31 +1,34 @@
-import {useAuthContext} from '../../context/AuthContext'
+import { useAuthContext } from '../../context/AuthContext';
 import { extractTime } from '../../utils/extractTime';
 import useChat from '../../zustand/useChat';
 
-const Message = ({message}) => {
-  const {authUser}= useAuthContext();
-  const {selectedChat} = useChat();
-  const formattedTime =extractTime(message.createdAt)
+const Message = ({ message }) => {
+  const { authUser } = useAuthContext();
+  const { selectedChat } = useChat();
+  const formattedTime = extractTime(message.createdAt);
   const fromMe = message.senderId === authUser._id;
-  const chatClassName = fromMe? 'chat-end' :'chat-start';
-  const profilepic = fromMe? authUser.profilepic: selectedChat?.profilepic;
-  const bubbleBgColor = fromMe? 'bg-blue-500' : '';
-  const ShakeClass = message.shouldShake ? "shake" :""; 
+  const chatClassName = fromMe ? 'chat-end' : 'chat-start';
+  const profilepic = fromMe ? authUser.profilepic : selectedChat?.profilepic;
+  const bubbleBgColor = fromMe ? 'bg-blue-500' : '';
+  const ShakeClass = message.shouldShake ? 'shake' : '';
   return (
     <div className={`chat ${chatClassName}`}>
-        <div className="chat-image avatar">
-            <div className="w-10 rounded-full"> 
-                <img alt = 'Tailwind CSS chat bubble component' src={profilepic} />
-            </div>
-
+      <div className="chat-image avatar">
+        <div className="w-10 rounded-full">
+          <img alt="Tailwind CSS chat bubble component" src={profilepic} />
         </div>
-        <div className={`chat-bubble text-white ${bubbleBgColor} ${ShakeClass} `} >{message.message}</div>
-        <div className="chat-footer opacity-90 text-xs flex gap-1 items-center">{formattedTime}</div>
+      </div>
+      <div className={`chat-bubble text-white ${bubbleBgColor} ${ShakeClass} `}>
+        {message.message}
+      </div>
+      <div className="chat-footer opacity-90 text-xs flex gap-1 items-center">
+        {formattedTime}
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Message
+export default Message;
 
 //Starter code
 /*

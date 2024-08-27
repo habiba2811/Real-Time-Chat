@@ -1,18 +1,16 @@
 import { useState } from 'react';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import useLogin from '../../hooks/useLogin';
 const Login = () => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
-  const [username,setUsername] = useState("");
-  const [password,setPassword] = useState("");
+  const { loading, login } = useLogin();
 
-
-  const {loading,login}=useLogin()
-
-const handleSubmit= async (e)=> {
-  e.preventDefault();
-  await login(username,password)
-}
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await login(username, password);
+  };
   return (
     <div className="flex flex-col items-center justify-center min-w-96 mx-auto">
       <div className="w-full max-w-md p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0">
@@ -29,7 +27,7 @@ const handleSubmit= async (e)=> {
               placeholder="Enter user name"
               className="w-full p-3 border border-gray-300 rounded-lg"
               value={username}
-              onChange={(e)=> setUsername(e.target.value)}
+              onChange={(e) => setUsername(e.target.value)}
             />
           </div>
           <div className="mb-4">
@@ -41,9 +39,8 @@ const handleSubmit= async (e)=> {
               placeholder="Enter Password"
               className="w-full p-3 border border-gray-300 rounded-lg"
               value={password}
-              onChange={(e)=> setPassword(e.target.value)}
-           
-           />
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </div>
           <Link
             to="/signup"
@@ -54,15 +51,19 @@ const handleSubmit= async (e)=> {
           <button
             type="submit"
             className="w-full py-3 px-4 bg-blue-900 text-white text-lg font-semibold rounded-lg hover:bg-blue-700"
-          disabled={loading}
+            disabled={loading}
           >
-             {loading ? <span className='loading loading-spinner'></span> : "Login"}
+            {loading ? (
+              <span className="loading loading-spinner"></span>
+            ) : (
+              'Login'
+            )}
           </button>
         </form>
       </div>
     </div>
   );
-}
+};
 
 export default Login;
 

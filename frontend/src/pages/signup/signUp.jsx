@@ -1,29 +1,26 @@
-import {Link} from 'react-router-dom'
-import GenderCheckbox from "./GenderCheckbox";
-import {useState} from 'react'
+import { Link } from 'react-router-dom';
+import GenderCheckbox from './GenderCheckbox';
+import { useState } from 'react';
 import useSignup from '../../hooks/useSignup';
 const SignUp = () => {
-
-  const [inputs,setInputs] = useState({
-    fullName:"",
-    username:"",
-    password:"",
-    confirmPassword:"",
-    gender:""
+  const [inputs, setInputs] = useState({
+    fullName: '',
+    username: '',
+    password: '',
+    confirmPassword: '',
+    gender: '',
   });
 
-  const {loading,signup}=useSignup()
+  const { loading, signup } = useSignup();
 
-  const handleCheckboxChange =(gender) =>{
-    setInputs({...inputs,gender})
-
-  }
-const handleSubmit = async(e) =>{
-  e.preventDefault();
-  await signup(inputs)
-}
+  const handleCheckboxChange = (gender) => {
+    setInputs({ ...inputs, gender });
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await signup(inputs);
+  };
   return (
-    
     <div className="flex flex-col items-center justify-center min-w-96 mx-auto">
       <div className="w-full max-w-sm p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0">
         <h1 className="text-3xl font-semibold text-center text-gray-300 mb-4">
@@ -38,8 +35,10 @@ const handleSubmit = async(e) =>{
               type="text"
               placeholder="Enter your full name"
               className="w-full p-2 border border-gray-300 rounded-lg"
-                value={inputs.fullName}
-                onChange={(e) => setInputs ({...inputs,fullName: e.target.value})}
+              value={inputs.fullName}
+              onChange={(e) =>
+                setInputs({ ...inputs, fullName: e.target.value })
+              }
             />
           </div>
           <div className="mb-3">
@@ -51,7 +50,9 @@ const handleSubmit = async(e) =>{
               placeholder="Enter your User name"
               className="w-full p-2 border border-gray-300 rounded-lg"
               value={inputs.username}
-              onChange={(e) => setInputs ({...inputs,username: e.target.value})}
+              onChange={(e) =>
+                setInputs({ ...inputs, username: e.target.value })
+              }
             />
           </div>
           <div className="mb-4">
@@ -63,7 +64,9 @@ const handleSubmit = async(e) =>{
               placeholder="Enter Password"
               className="w-full p-2 border border-gray-300 rounded-lg"
               value={inputs.password}
-              onChange={(e) => setInputs ({...inputs,password: e.target.value})}
+              onChange={(e) =>
+                setInputs({ ...inputs, password: e.target.value })
+              }
             />
           </div>
           <div className="mb-4">
@@ -75,7 +78,9 @@ const handleSubmit = async(e) =>{
               placeholder="Confirm Password"
               className="w-full p-2 border border-gray-300 rounded-lg"
               value={inputs.confirmPassword}
-              onChange={(e) => setInputs ({...inputs,confirmPassword: e.target.value})}
+              onChange={(e) =>
+                setInputs({ ...inputs, confirmPassword: e.target.value })
+              }
             />
           </div>
           <Link
@@ -84,18 +89,29 @@ const handleSubmit = async(e) =>{
           >
             Already have an account?
           </Link>
-         <div> <button
-            type="submit"
-            className="w-full py-2 px-4 bg-blue-900 text-white text-base font-semibold rounded-lg hover:bg-blue-700"
-           disabled= {loading} >
-            {loading ? <span className='loading loading-spinner'></span> : "Sign Up"}
-          </button> </div>
-          <GenderCheckbox onCheckboxChange ={handleCheckboxChange} selectedGender={inputs.gender} />
+          <div>
+            {' '}
+            <button
+              type="submit"
+              className="w-full py-2 px-4 bg-blue-900 text-white text-base font-semibold rounded-lg hover:bg-blue-700"
+              disabled={loading}
+            >
+              {loading ? (
+                <span className="loading loading-spinner"></span>
+              ) : (
+                'Sign Up'
+              )}
+            </button>{' '}
+          </div>
+          <GenderCheckbox
+            onCheckboxChange={handleCheckboxChange}
+            selectedGender={inputs.gender}
+          />
         </form>
       </div>
     </div>
   );
-}
+};
 
 export default SignUp;
 

@@ -1,27 +1,26 @@
-import Chat from './Chat'
-import useGetChats from "../../hooks/useGetChats"
-import { getRandomEmoji } from "../../utils/emojis";
-const Chats =()=> {
-    const {loading, chats} = useGetChats();
-    return(
+import Chat from './Chat';
+import useGetChats from '../../hooks/useGetChats';
+import { getRandomEmoji } from '../../utils/emojis';
+const Chats = () => {
+  const { loading, chats } = useGetChats();
+  return (
     <div className="py-2 flex flex-col overflow-auto">
+      {chats.map((chat, idx) => (
+        <Chat
+          key={chat._id}
+          chat={chat}
+          emoji={getRandomEmoji()}
+          lastIdx={idx === chats.length - 1}
+        />
+      ))}
 
-         {chats.map((chat,idx) => (
-            <Chat
-            key={chat._id}
-            chat={chat}
-            emoji={getRandomEmoji()}
-            lastIdx ={idx === chats.length-1}
-            />
-
-         ))}
-
-        {loading? <span className='loading loading-spinnner mx-auto'></span> : null}
-       
+      {loading ? (
+        <span className="loading loading-spinnner mx-auto"></span>
+      ) : null}
     </div>
-    )
-}
-export default Chats
+  );
+};
+export default Chats;
 
 /*import Chat from './Chat'
 const Chats =()=> {
