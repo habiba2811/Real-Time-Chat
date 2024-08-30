@@ -11,15 +11,7 @@
 This is a real-time chat application built with the MERN (MongoDB, Express, React, Node.js) stack and Socket.io for real-time communication. This repository also includes Docker support and a CI/CD pipeline to automate the deployment process.
 
 ## Demo
-
-Check out the live demo of the app [[here](https://chitchat-2-o4xj.onrender.com/)](#).
-
-![signUp](https://github.com/user-attachments/assets/725b3a63-17b3-401f-a705-e680f7720fdf)
-![login](https://github.com/user-attachments/assets/3231870a-554b-472d-8581-1a63eb0b3be9)
-![homePage](https://github.com/user-attachments/assets/45690189-1e90-48e5-96f8-057f19b231d8)
-![chat2](https://github.com/user-attachments/assets/83c13da8-16c4-4444-85b1-1953993d96e4)
-
-
+![chatApp-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/934feed6-83e0-422d-84b0-cbf050ecfbe4)
 ## Features
 
 - **Real-time Communication**: Send and receive messages instantly with Socket.io.
@@ -35,9 +27,3 @@ Check out the live demo of the app [[here](https://chitchat-2-o4xj.onrender.com/
 - **Real-time Communication**: Socket.io
 - **Containerization**: Docker
 - **Deployment**: Render
-
-## Known Issues
-
-### Socket.io Deployment
-
-**Note:** Currently, the Socket.io real-time features may not function correctly on Render due to deployment limitations. The application is known to work as expected when running locally on `localhost`. If you encounter issues related to Socket.io on Render or other hosting services
