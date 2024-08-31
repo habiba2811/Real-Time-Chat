@@ -11,7 +11,7 @@ This is a real-time chat application built with the MERN (MongoDB, Express, Reac
 
 ## Demo
 
-![Chat App Demo](gif/chatt.gif)
+![chatApp-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/934feed6-83e0-422d-84b0-cbf050ecfbe4)
 
 ## Features
 
